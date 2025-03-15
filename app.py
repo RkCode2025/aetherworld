@@ -4,7 +4,6 @@ import os
 import requests
 import google.generativeai as genai
 from dotenv import load_dotenv  
-import random
 
 # Load environment variables
 load_dotenv()
@@ -16,6 +15,7 @@ CORS(app)  # Enable CORS for all routes
 GENAI_API_KEY = os.getenv("GEMINI_API_KEY")  # Load API key from .env
 genai.configure(api_key=GENAI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
+
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
 
 DEFENSE_STYLES = {
@@ -25,8 +25,42 @@ DEFENSE_STYLES = {
     "Devil's Advocate": "Play devil's advocate and provide a counterargument defending this issue:",
 }
 
+@app.route("/generate-unsummary", methods=["POST"])
+def generate_unsummary():
+    """Generates an 'Unsummary' based on the user's input."""
+    data = request.json
+    prompt = data.get("prompt")
+    style = data.get("style")
+    word_count = data.get("wordCount")
+
+    if not prompt or not style or not word_count:
+        return jsonify({"error": "Missing required fields: 'prompt', 'style', 'wordCount'"}), 400
+
+    try:
+        response = model.generate_content(f"Write a {style} unsummary of {word_count} words for: {prompt}")
+        return jsonify({"unsummary": response.text})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/generate-excuse", methods=["POST"])
+def generate_excuse():
+    """Generates a humorous but realistic excuse."""
+    try:
+        data = request.json
+        prompt = data.get("situation")
+
+        if not prompt:
+            return jsonify({"error": "Missing required field: 'situation'"}), 400
+
+        ai_prompt = f"Give a very realistic and believable excuse for this situation: {prompt} (Make it absurd but very realistic.)"
+        response = model.generate_content(ai_prompt)
+        return jsonify({"excuse": response.text})
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
 @app.route("/reverse-cancel", methods=["POST"])
 def reverse_cancel():
+    """Generates a defense argument for a controversial topic."""
     try:
         data = request.json
         topic = data.get("topic")
@@ -64,11 +98,13 @@ def reverse_cancel():
             return jsonify({"error": f"Response length ({actual_word_count} words) is outside the acceptable range."}), 400
 
         return jsonify({"defense": generated_text, "word_count": actual_word_count})
+
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
 @app.route("/generate-timeline", methods=["POST"])
 def generate_timeline():
+    """Generates an alternate history timeline."""
     try:
         data = request.json
         prompt = data.get("prompt")
@@ -76,38 +112,25 @@ def generate_timeline():
         if not prompt:
             return jsonify({"error": "Missing required field: 'prompt'"}), 400
 
-        ai_prompt = (
-            f"Generate an alternate history timeline based on: {prompt}. "
-            "Provide exactly 6-8 key events in chronological order. "
-            "Each event should include:\n"
-            "- A year\n"
-            "- A short summary (one sentence)\n"
-            "- A detailed description (2-3 sentences)\n"
-            "Format the response as:\n"
-            "YEAR: Short Summary | Detailed Description"
-        )
+        ai_prompt = f"Generate an alternate history timeline based on: {prompt}. Provide key events with years."
 
         response = model.generate_content(ai_prompt)
         generated_text = response.text
 
+        # Convert response into structured timeline events
         events = []
         for line in generated_text.split("\n"):
             parts = line.strip().split(": ", 1)
             if len(parts) == 2:
-                year_desc = parts[1].split(" | ", 1)
-                if len(year_desc) == 2:
-                    year = parts[0].strip()
-                    summary = year_desc[0].strip()
-                    description = year_desc[1].strip()
-                    events.append({"year": year, "summary": summary, "description": description})
+                year, description = parts
+                events.append({"year": year.strip(), "description": description.strip()})
 
-        if events:
-            events = sorted(events, key=lambda x: x["year"])[: random.randint(6, 8)]
+        return jsonify({"timeline": events if events else [{"year": "N/A", "description": "No timeline events generated."}]})
 
-        return jsonify({"timeline": events if events else [{"year": "N/A", "summary": "No timeline events generated.", "description": ""}]})
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
 if __name__ == "__main__":
     print("🚀 Flask API running at http://127.0.0.1:5000/")
     app.run(debug=True)
+
