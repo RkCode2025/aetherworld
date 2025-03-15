@@ -1,0 +1,212 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #0f0f0f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+/* Title */
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ef4444; /* Red theme */
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #ef4444, #dc2626, #f87171); /* Red gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #f87171; /* Lighter red */
+  margin-bottom: 30px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Form */
+.form {
+  width: 100%;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.form-label {
+  display: block;
+  font-size: 1.1rem;
+  color: #ef4444;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  background-color: #222;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px; /* Add spacing below the input */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.form-input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.6); /* Red glow */
+}
+
+/* Style Grid */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.style-option {
+  padding: 12px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  background-color: #222;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.style-option:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.style-option.active {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+/* Word Count Slider */
+.form-slider {
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ef4444;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  background-color: #6b7280;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error Message */
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Response Output */
+.response-container {
+  width: 100%;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border: 2px solid #ef4444;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+  display: none; /* Hidden by default */
+  margin-top: 20px;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.response-title {
+  font-size: 1.2rem;
+  color: #ef4444;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.response-text {
+  font-size: 1rem;
+  color: white;
+  line-height: 1.6;
+}
+
+/* Copy Button */
+.copy-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3b82f6; /* Blue color */
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-button:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}

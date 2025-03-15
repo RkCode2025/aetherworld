@@ -1,0 +1,305 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #111);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Subtle Animated Gradient Background */
+body::before {
+  content: "";
+  position: fixed; /* Fixed to avoid interfering with scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 10%, transparent 20%),
+              radial-gradient(circle, rgba(59, 130, 246, 0.1) 10%, transparent 20%),
+              radial-gradient(circle, rgba(236, 72, 153, 0.1) 10%, transparent 20%);
+  background-size: 300px 300px;
+  animation: moveBackground 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(150px, 150px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background: rgba(17, 17, 17, 0.8); /* Semi-transparent dark background */
+  border-radius: 20px;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  z-index: 1;
+}
+
+/* Title */
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #a855f7;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #a855f7, #ec4899, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #d8b4fe;
+  margin-bottom: 30px;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+#prompt {
+  padding: 14px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  background-color: rgba(34, 34, 34, 0.8);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+#prompt:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+}
+
+#generate-button {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #a855f7, #7e22ce);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(168, 85, 247, 0.2);
+}
+
+#generate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(168, 85, 247, 0.4);
+}
+
+#generate-button:disabled {
+  background: linear-gradient(45deg, #6b7280, #4b5563);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Error Message */
+.error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: none;
+}
+
+/* Timeline Styling */
+.timeline-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Vertical Line */
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #a855f7, #ec4899);
+}
+
+/* Timeline Events */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+.timeline-event {
+  background: rgba(51, 51, 51, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 220px;
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Circle Indicator */
+.timeline-event::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(45deg, #a855f7, #ec4899);
+  border-radius: 50%;
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+}
+
+/* Hover Effect */
+.timeline-event:hover {
+  transform: scale(1.05);
+  background: rgba(168, 85, 247, 0.8);
+  color: white;
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+}
+
+.timeline-event:hover h3 {
+  color: white;
+}
+
+.timeline-event:hover p {
+  color: #f0f0f0;
+}
+
+/* Timeline Text */
+.timeline-event h3 {
+  font-size: 1.3rem;
+  color: #a855f7;
+  margin-bottom: 10px;
+}
+
+.timeline-event p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0;
+}
+
+/* Download Button */
+.download-button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Scrollbar Styling */
+.timeline-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #a855f7, #ec4899);
+  border-radius: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .timeline-event {
+    min-width: 180px;
+    padding: 15px;
+  }
+
+  .timeline-event h3 {
+    font-size: 1.1rem;
+  }
+
+  .timeline-event p {
+    font-size: 0.85rem;
+  }
+
+  .download-button {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .timeline-event {
+    min-width: 150px;
+    padding: 10px;
+  }
+
+  .timeline-event h3 {
+    font-size: 1rem;
+  }
+
+  .timeline-event p {
+    font-size: 0.8rem;
+  }
+
+  .download-button {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+  }
+}

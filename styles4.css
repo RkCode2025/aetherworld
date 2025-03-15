@@ -1,0 +1,157 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #facc15; /* Yellow theme */
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #facc15, #eab308, #fde047); /* Yellow gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: #fde047; /* Lighter yellow */
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  /* Input Section */
+  .input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  #situation {
+    padding: 14px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #situation:focus {
+    border-color: #facc15; /* Yellow focus border */
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.6); /* Yellow glow */
+  }
+  
+  #generate-button {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #facc15; /* Yellow button */
+    color: #0f0f0f; /* Dark text */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #generate-button:hover {
+    background-color: #eab308; /* Darker yellow on hover */
+    transform: translateY(-2px); /* Lift effect */
+  }
+  
+  #generate-button:active {
+    transform: translateY(0); /* Reset on click */
+  }
+  
+  #generate-button:disabled {
+    background-color: #6b7280; /* Gray when disabled */
+    cursor: not-allowed;
+    transform: none; /* Disable lift effect */
+  }
+  
+  /* Error Message */
+  .error {
+    color: #ef4444; /* Red for errors */
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Result Display */
+  .result-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border: 2px solid #facc15; /* Yellow border */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(250, 204, 21, 0.3); /* Yellow glow */
+    display: none; /* Hidden by default */
+  }
+  
+  .result-title {
+    font-size: 1.2rem;
+    color: #facc15; /* Yellow text */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .result-text {
+    font-size: 1rem;
+    color: white;
+    line-height: 1.6;
+  }
+  
+  /* Copy Button */
+  .copy-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3b82f6; /* Blue color */
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .copy-button:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+  }
+  
+  .copy-button:active {
+    transform: translateY(0); /* Reset on click */
+  }

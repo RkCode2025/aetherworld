@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsummary AI</title>
+  <link rel="stylesheet" href="styles3.css">
+  <link rel="icon" type="image/png" href="artificial-intelligence.png">
+</head>
+<body>
+  <div class="container">
+    <!-- Title -->
+    <h1 class="title">Unsummary AI</h1>
+    <p class="subtitle">
+      Transform a short prompt into a long, detailed piece in your chosen style.
+    </p>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <!-- Prompt Input -->
+      <textarea
+        id="prompt"
+        placeholder="Enter a short prompt..."
+      ></textarea>
+      
+      <!-- Style & Word Count Container -->
+      <div class="style-wordcount-container">
+        <!-- Style Selection -->
+        <select id="style">
+          <option value="Default">Default</option>
+          <option value="Shakespearean English">Shakespearean English</option>
+          <option value="Cyberpunk/Futuristic Tone">Cyberpunk/Futuristic Tone</option>
+          <option value="Old-School Medieval Speech">Old-School Medieval Speech</option>
+          <option value="Meme or Gen-Z Lingo">Meme or Gen-Z Lingo</option>
+          <option value="Philosopher Style">Philosopher Style</option>
+        </select>
+
+        <!-- Word Count Input -->
+        <input
+          type="number"
+          id="wordCount"
+          placeholder="Word Count (50-1000)"
+          min="50"
+          max="1000"
+          value="200"
+        />
+      </div>
+
+      <!-- Generate Button -->
+      <button id="generate-button" class="generate-button">
+        Generate Text
+      </button>
+    </div>
+
+    <!-- Result Display -->
+    <div id="result-container" class="result-container" style="display: none;">
+      <p id="result-text"></p>
+      <button id="copy-button" class="copy-button">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script src="m.js"></script>
+</body>
+</html>

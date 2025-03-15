@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline Divergence</title>
+  <link rel="stylesheet" href="styles2.css">
+  <link rel="icon" type="image/png" href="artificial-intelligence.png">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Timeline Divergence</h1>
+    <p class="subtitle">Explore alternate histories and discover what could have been.</p>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <input type="text" id="prompt" placeholder="Enter a scenario (e.g., What if Rome never fell?)" />
+      <button id="generate-button">Generate Timeline</button>
+    </div>
+
+    <p id="error-message" class="error"></p>
+
+    <!-- Timeline Display -->
+    <div id="timeline-container" class="timeline-container">
+      <div id="timeline" class="timeline"></div>
+    </div>
+
+    <button id="download-button" class="download-button">Download Timeline</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="h.js"></script>
+</body>
+</html>

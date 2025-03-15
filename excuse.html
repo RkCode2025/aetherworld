@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excuse-o-Matic AI</title>
+  <link rel="stylesheet" href="styles4.css">
+  <link rel="icon" type="image/png" href="artificial-intelligence.png">
+</head>
+<body>
+  <div class="container">
+    <!-- Title -->
+    <h1 class="title">Excuse-o-Matic AI 🎭</h1>
+    <p class="subtitle">
+      Get the most ridiculous and creative excuses for any situation!
+    </p>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <input
+        type="text"
+        id="situation"
+        placeholder="Enter your situation..."
+      />
+      <button id="generate-button">Generate Excuse</button>
+    </div>
+
+    <!-- Error Message -->
+    <p id="error-message" class="error"></p>
+
+    <!-- Result Display -->
+    <div id="result-container" class="result-container">
+      <p class="result-title">Your Excuse:</p>
+      <p id="excuse-text" class="result-text"></p>
+      <button id="copy-button" class="copy-button">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script src="df.js"></script>
+</body>
+</html>

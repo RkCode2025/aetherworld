@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse Cancel AI</title>
+  <link rel="stylesheet" href="styles5.css">
+  <link rel="icon" type="image/png" href="artificial-intelligence.png">
+</head>
+<body>
+  <div class="container">
+    <!-- Title -->
+    <h1 class="title"> Reverse Cancel AI</h1>
+    <p class="subtitle">
+      Generate a strong defense against cancelation!
+    </p>
+  
+    <!-- Form -->
+    <form id="defense-form" class="form">
+      <!-- Topic Input -->
+      <label for="topic" class="form-label">Topic:</label>
+      <input
+        type="text"
+        id="topic"
+        class="form-input"
+        placeholder="E.g., Pineapple on pizza is good"
+        required
+      />
+  
+      <!-- Defense Style Selection -->
+      <label class="form-label">Defense Style:</label>
+      <div class="style-grid">
+        <div class="style-option" data-style="Serious Defense">Serious Defense</div>
+        <div class="style-option" data-style="Humorous Reversal">Humorous Reversal</div>
+        <div class="style-option" data-style="Historical Context">Historical Context</div>
+        <div class="style-option" data-style="Devil's Advocate">Devil's Advocate</div>
+      </div>
+  
+      <!-- Word Count Slider -->
+      <label for="word-count" class="form-label">Word Count: <span id="word-count-value">200</span></label>
+      <input
+        type="range"
+        id="word-count"
+        class="form-slider"
+        min="50"
+        max="1000"
+        value="200"
+      />
+  
+      <!-- Submit Button -->
+      <button type="submit" id="submit-button" class="submit-button">
+        Defend This!
+      </button>
+    </form>
+  
+    <!-- Error Message -->
+    <p id="error-message" class="error"></p>
+  
+    <!-- Response Output -->
+    <div id="response-container" class="response-container">
+      <p class="response-title">Your Defense:</p>
+      <p id="response-text" class="response-text"></p>
+      <button id="copy-button" class="copy-button">Copy to Clipboard</button>
+    </div>
+  </div>
+  <script src="f.js"></script>
+</body>
+</html>
